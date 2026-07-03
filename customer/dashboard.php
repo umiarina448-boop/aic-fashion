@@ -9,6 +9,9 @@ if(!isset($_SESSION['user_id'])){
 
 $user_id = $_SESSION['user_id'];
 
+// URL service admin (tempat gambar produk disimpan)
+$admin_url = "https://admin-panel-production-9a90.up.railway.app";
+
 /* USER */
 $user = mysqli_fetch_assoc(mysqli_query($conn,"
 SELECT * FROM users WHERE id='$user_id'
@@ -426,7 +429,7 @@ $user_name = $user['nama'] ?? 'Pelanggan';
 
     <?php while($row = mysqli_fetch_assoc($produk)){ ?>
         <div class="card">
-            <img class="card-img" src="../uploads/<?php echo $row['gambar']; ?>" 
+            <img class="card-img" src="<?php echo $admin_url; ?>/uploads/<?php echo $row['gambar']; ?>" 
                  alt="<?php echo $row['nama_produk']; ?>"
                  onerror="this.src='https://placehold.co/400x400?text=No+Image'">
             <div class="card-content">
